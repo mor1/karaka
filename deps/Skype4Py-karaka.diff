@@ -1,0 +1,35 @@
+diff -Naur -x '*.svn*' Skype4Py-1.0.29.0/Skype4Py/API/posix_x11.py Skype4Py-karaka/Skype4Py/API/posix_x11.py
+--- Skype4Py-1.0.29.0/Skype4Py/API/posix_x11.py	2008-05-09 08:19:17.000000000 +0100
++++ Skype4Py-karaka/Skype4Py/API/posix_x11.py	2008-11-11 12:09:38.000000000 +0000
+@@ -278,6 +278,8 @@
+                             byref(nitems_ret), byref(bytes_after_ret), byref(winp))
+         if not fail and self.error == None and format_ret.value == 32 and nitems_ret.value == 1:
+             return winp.contents.value
++        # Set any error to none
++        self.error = None
+ 
+     def Close(self):
+         event = _XEvent()
+@@ -317,9 +319,11 @@
+             while self.wait:
+                 self.win_skype = self.get_skype()
+                 if self.win_skype != None:
+-                    break
+-                else:
+-                    time.sleep(1.0)
++                    c = ICommand(-1, 'NAME %s' % self.FriendlyName, '', True, Timeout)
++                    self.SendCommand(c, True)
++                    if c.Reply == 'OK':
++                        break
++                time.sleep(1.0)
+             else:
+                 raise ISkypeAPIError('Skype attach timeout')
+         finally:
+@@ -327,6 +331,7 @@
+         c = ICommand(-1, 'NAME %s' % self.FriendlyName, '', True, Timeout)
+         self.SendCommand(c, True)
+         if c.Reply != 'OK':
++            print c.Reply
+             self.win_skype = None
+             self.SetAttachmentStatus(apiAttachRefused)
+             return

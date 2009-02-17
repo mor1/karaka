@@ -1,0 +1,64 @@
+#! /bin/sh
+#
+# Karaka Skype-XMPP Gateway: register buddy control /etc/init.d script
+# <http://www.vipadia.com/products/karaka.html>
+#
+# Copyright (C) 2008-2009 Vipadia Limited
+# Richard Mortier <mort@vipadia.com>
+# Neil Stratford <neils@vipadia.com>
+#
+# This file is based on skeleton script from Miquel van Smoorenburg 
+# <miquels@cistron.nl> 
+#
+
+## This program is free software; you can redistribute it and/or
+## modify it under the terms of the GNU General Public License version
+## 2 as published by the Free Software Foundation.
+
+## This program is distributed in the hope that it will be useful, but
+## WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+## General Public License version 2 for more details.
+
+## You should have received a copy of the GNU General Public License
+## version 2 along with this program; if not, write to the Free
+## Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+## MA 02110-1301, USA.
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+SCREEN=/usr/bin/screen
+CONTROLLER="/opt/karaka/trunk/register.py"
+PIDFILE="/tmp/karaka_register.pid"
+NAME=karaka-register
+DESC=KarakaRegister
+
+test -x $DAEMON || exit 0
+
+set -e
+
+case "$1" in
+  start )
+    echo -n "Starting $DESC: "
+    sudo -H -u karaka $SCREEN -S $NAME -d -m $CONTROLLER
+    echo "$NAME."
+  ;;
+  stop )
+    echo -n "Stopping $DESC: "
+    [ -f $PIDFILE ] && sudo -u karaka kill `cat $PIDFILE`
+    echo "$NAME."
+  ;;
+  restart|force )
+    echo -n "Restarting $DESC: "
+    [ -f $PIDFILE ] && sudo -u karaka kill `cat $PIDFILE`
+    sleep 1
+    sudo -H -u karaka $SCREEN -S $NAME -d -m $CONTROLLER
+    echo "$NAME."
+  ;;
+  * )
+    N=/etc/init.d/$NAME
+    echo "Usage: $N {start|stop|restart}" >&2
+    exit 1
+  ;;
+esac
+
+exit 0

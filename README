@@ -1,0 +1,21 @@
+                    Karaka Skype-XMPP Gateway v1.0
+               Copyright (C) 2009-2009 Vipadia Limited
+              
+            Home:<http://vipadia.com/products/karaka.html>
+              Source:<http://code.google.com/p/karaka/>
+
+                  Richard Mortier <mort@vipadia.com>
+                  Neil Stratford <neils@vipadia.com>
+                                   
+Karaka is licensed under the GNU GPL version 2.
+
+Karaka comes with ABSOLUTELY NO WARRANTY; for details read the file
+'LICENSE'.  This is free software, and you are welcome to redistribute
+it under certain conditions; read the file 'LICENSE' for details.
+Visit <http://vipadia.com/products/karaka.html> for further details.
+
+Karaka makes use of Skype and the Skype API.  You should therefore
+ensure that your use of Karaka is compatible with the Skype EULA and
+API terms-of-use set out at <http://www.skype.com/legal/eula/> and
+<http://www.skype.com/legal/terms/api/>.
+
