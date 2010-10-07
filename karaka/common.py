@@ -3,6 +3,7 @@
 # <http://www.vipadia.com/products/karaka.html>
 #
 # Copyright (C) 2008-2009 Vipadia Limited
+# Copyright (C) 2010 Voxeo Corporation
 # Richard Mortier <mort@vipadia.com>
 # Neil Stratford <neils@vipadia.com>
 #
@@ -24,7 +25,9 @@
 import sys, syslog, os, md5
 
 COPYRIGHT_MESSAGE = """\
-Karaka version 1.0, Copyright (C) 2009-2009 Vipadia Limited
+Karaka version 1.0, Copyright (C) 2009-2009 Vipadia Limited,
+Copyright (C) 2010 Voxeo Corporation
+
 
 Karaka comes with ABSOLUTELY NO WARRANTY; for details type 'warranty'.
 This is free software, and you are welcome to redistribute it under

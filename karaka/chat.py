@@ -3,6 +3,7 @@
 # <http://www.vipadia.com/products/karaka.html>
 #
 # Copyright (C) 2008-2009 Vipadia Limited
+# Copyright (C) 2010 Voxeo Corporation
 # Richard Mortier <mort@vipadia.com>
 # Neil Stratford <neils@vipadia.com>
 #
